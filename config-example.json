@@ -1,6 +1,6 @@
 {
-    "account_sid" : "",
-    "auth_token" : "",
-    "twilio_phone_number" : "",
-    "personal_phone_number" : ""
+    "account_sid" : "Your account SID",
+    "auth_token" : "Your auth token",
+    "twilio_phone_number" : "+19999999999",
+    "personal_phone_number" : "+19999999999"
 }
