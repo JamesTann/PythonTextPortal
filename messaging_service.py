@@ -3,9 +3,11 @@ from twilio.rest import Client
 
 class MessagingService:
 
-    def __init__(self, path):
+    def __init__(self, path, script, debug = False):
         self.path = path
-        
+        self.script = script.upper()
+        self.debug = debug
+
         # load existing settings and initiate client
         try:
             with open(self.path) as config_file:
@@ -16,10 +18,15 @@ class MessagingService:
 
     def send(self, message):
 
+        message = "[" + self.script + "] " + message
+
         # try to send a message
         if self.client is not None and self.options is not None:
             try:
-                self.client.messages.create(body=message, from_=self.options.get('twilio_phone_number'), to=self.options.get('personal_phone_number'))
+                if self.debug:
+                    print(message)
+                else:
+                    self.client.messages.create(body=message, from_=self.options.get('twilio_phone_number'), to=self.options.get('personal_phone_number'))
             except:
                 print("Messaging Service Error: Unable to send message from client.")
         else:

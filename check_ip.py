@@ -11,7 +11,7 @@ CHECK_IP_URL = 'http://checkip.amazonaws.com'
 SAVE_FILE = './ip_save_file.json'
 
 # initiate messaging service
-messager = MessagingService('./config.json')
+messager = MessagingService('./config.json', "check_ip")
 
 # get old IP address (if any)
 old_ip = None
